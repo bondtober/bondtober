@@ -74,6 +74,10 @@
 
         /* Media Query untuk HP*/
         @media (max-width: 600px) {
+            .menu-toogle {
+                display: block;
+            }
+
             nav {
                 flex-direction: column;
                 align-items: flex-start;
@@ -81,22 +85,32 @@
             }
 
             .logo img {
-                height: 60px;
+                height: 40px;
                 margin-bottom: 10px;
             }
             
             nav ul {
                 flex-direction: column;
                 width: 100%;
+                display: none;
+                background-color: #FAD2E1;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+
+            nav ul.show {
+                display: flex;
             }
 
             nav ul li {
                 width: 100%;
-                padding: 8px 0;
+                padding: 15px 0;
+                text-align: center;
             }
 
             header.hero {
-                padding: 400px 20px;
+                padding: 200px 20px;
             }
 
             header.hero h1 {
@@ -108,8 +122,15 @@
             }
 
             section {
-                padding: 40px 15px;
+                padding: 25px 15px;
             }
+        }
+
+        /*Menu Toogle*/
+        .menu-toogle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
         }
 
         /*Hero Section*/
@@ -251,6 +272,12 @@
             document.querySelectorAll('nav ul li a').forEach(link => link.classList.remove('active-link'));
             const targetLink = Array.from(document.querySelectorAll('nav ul li a')).find(a => a.textContent.toLowerCase().includes(id));
             if (targetLink) targetLink.classList.add('active-link');
+            //Close menu when click link
+            document.getElementById("nav-links").classList.remove("show");
+        }
+
+        function toogleMenu() {
+            document.getElementById("nav-links").classList.toogle("show");
         }
     </script>
 </body>
